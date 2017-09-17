@@ -1,6 +1,7 @@
 package modelo;
 
-import javax.annotation.ManagedBean;
+import entidade.Usuario;
+import javax.faces.bean.ManagedBean;
 import javax.ejb.EJB;
 import javax.faces.bean.ViewScoped;
 import negocio.IUsuario;
@@ -8,7 +9,7 @@ import negocio.IUsuario;
 @ManagedBean
 @ViewScoped
 public class CadastroUsuarioMB {
-    private Long id;
+    
     private String nome;
     private String sobrenome;
     private String usuario;
@@ -18,7 +19,7 @@ public class CadastroUsuarioMB {
     private String pais;
     
     @EJB
-    private IUsuario CadastroUsuarioBean;
+    private IUsuario cadastroUsuarioBean;
 
     public String getNome() {
         return nome;
@@ -77,8 +78,9 @@ public class CadastroUsuarioMB {
     }
     
     public String criar() {
-        
-        if (CadastroUsuarioBean.criar(this.getNome(), this.getSobrenome(), this.getUsuario(), this.getSenha(), this.getCidade(), this.getEstado(), this.getPais()))
+        System.out.println("Criand");
+        if (cadastroUsuarioBean.criar(this.getNome(), this.getSobrenome(), this.getUsuario(), this.getSenha(),
+                this.getCidade(), this.getEstado(), this.getPais()))
             return "Usuário criado com sucesso!";
         else
             return "Ocorreu erro ao criar o usuário!";
