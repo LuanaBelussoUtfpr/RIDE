@@ -13,10 +13,11 @@ public class CadastroUsuarioMB {
     private String nome;
     private String sobrenome;
     private String usuario;
+    private String email;
     private String senha;
     private String cidade;
     private String estado;
-    private String pais;
+    private String pais="Brasil";
     
     @EJB
     private IUsuario cadastroUsuarioBean;
@@ -76,14 +77,31 @@ public class CadastroUsuarioMB {
     public void setPais(String pais) {
         this.pais = pais;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
+    
+    public boolean validarsenha(String senha, String confirmarsenha){
+        if(senha==confirmarsenha){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public String criar() {
-        System.out.println("Criand");
+        System.out.println(pais);
         if (cadastroUsuarioBean.criar(this.getNome(), this.getSobrenome(), this.getUsuario(), this.getSenha(),
-                this.getCidade(), this.getEstado(), this.getPais()))
+                this.getEmail(), this.getCidade(), this.getEstado(), this.getPais())){
             return "Usuário criado com sucesso!";
-        else
-            return "Ocorreu erro ao criar o usuário!";
+        }else{
+            return "Ocorreu erro ao criar o usuário!";}
     }
     
 }

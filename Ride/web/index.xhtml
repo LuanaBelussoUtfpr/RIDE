@@ -2,24 +2,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      <ui:decorate template="menu.xhtml"></ui:decorate>
+      
     <h:head>
         <title>Facelet Title</title>
+        
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+          
+        
     </h:head>
     <h:body>
-        <h:form>
-            <p:inputText value="#{cadastroUsuarioMB.nome}"></p:inputText>
-            <p:inputText value="#{cadastroUsuarioMB.sobrenome}"></p:inputText>
-            <p:inputText value="#{cadastroUsuarioMB.usuario}"></p:inputText>
-            <p:inputText value="#{cadastroUsuarioMB.senha}"></p:inputText>
-            <p:inputText value="#{cadastroUsuarioMB.cidade}"></p:inputText>
-            <p:inputText value="#{cadastroUsuarioMB.estado}"></p:inputText>
-            <p:inputText value="#{cadastroUsuarioMB.pais}"></p:inputText>
-            
-            <p:commandButton ajax="false" value="criar" action="#{cadastroUsuarioMB.criar()}"></p:commandButton>
-        </h:form>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
         
-
+        
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                
+                <h1 class="header center orange-text">Starter Template</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+                </div>
+                <div class="row center">
+                    <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+                </div>
+                
+            </div>
+        </div>
     </h:body>
 </html>
 

@@ -12,7 +12,7 @@ public class CadastroUsuarioBean implements IUsuario {
     private EntityManager em;
     
     @Override
-    public boolean criar (String nome, String sobrenome, String usuario, String senha, String cidade,
+    public boolean criar (String nome, String sobrenome, String usuario, String senha, String email, String cidade,
             String estado, String pais){
         
         Usuario u = new Usuario();
@@ -21,6 +21,7 @@ public class CadastroUsuarioBean implements IUsuario {
         u.setSobrenome(sobrenome);
         u.setUsuario(usuario);
         u.setSenha(senha);
+        u.setEmail(email);
         u.setCidade(cidade);
         u.setEstado(estado);
         u.setPais(pais);
@@ -32,7 +33,7 @@ public class CadastroUsuarioBean implements IUsuario {
             return true;
             
         } catch (Exception e) {
-            System.out.println("");
+            System.out.println("ERRO");
         }
         
         return false;        

@@ -5,5 +5,6 @@ import javax.ejb.Local;
 @Local
 public interface IUsuario {
  
-    boolean criar (String nome, String sobrenome, String usuario, String senha, String cidade, String estado, String pais);
+    boolean criar (String nome, String sobrenome, String usuario, String senha, String email, String cidade, String estado, String pais);
+    
 }

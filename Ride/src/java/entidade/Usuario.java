@@ -15,9 +15,10 @@ public class Usuario implements Serializable{
     private String sobrenome;
     private String usuario;
     private String senha;
+    private String email;
     private String cidade;
     private String estado;
-    private String pais;
+    private String pais="Brasil";
 
     public Usuario() {
         super();
@@ -78,6 +79,15 @@ public class Usuario implements Serializable{
     public void setPais(String pais) {
         this.pais = pais;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
 
     @Override
     public int hashCode() {
