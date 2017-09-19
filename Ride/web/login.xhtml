@@ -33,8 +33,10 @@
                                     </h:form>
                                 </div>
                                 <div class="center">
-                                    <p:commandButton ajax="false" value="Login" actionListener="#{loginMB.login()}" class="btn-large pink" />
+                                    <p:commandButton ajax="false"  value="Login" actionListener="#{loginMB.validarlogin()}" class="btn-large pink" />
                                     <p:commandButton ajax="false" value="Registrar" action="cadastrousuario.xhtml" class="btn-large pink" />
+                                    
+                                    #{loginMB.msgLogin}
                                 </div>
                             </div>
                         </div>
