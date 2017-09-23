@@ -4,6 +4,7 @@ import entidade.Usuario;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
@@ -11,6 +12,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.swing.JOptionPane;
 import negocio.ILogin;
 
 @ManagedBean
@@ -65,7 +67,6 @@ public class LoginMB {
         
        
         if (this.getSenha().equals("1")){
-            System.out.println("deu");
             this.setMsgLogin("Deu certo");
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
@@ -73,7 +74,6 @@ public class LoginMB {
                 Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
-            System.out.println("não");
             this.setMsgLogin("Nao Deu certo");
         }
     }

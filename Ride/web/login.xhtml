@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <ui:decorate template="menu.xhtml"></ui:decorate>
+    <ui:decorate template="menulogin.xhtml"></ui:decorate>
     
     <h:head>
         <title>Login</title>
@@ -18,33 +18,32 @@
     </h:head>
     <h:body>
         <h:form>
-
             <div class="row">
+                
                 <div class="container">
+                   
                     <div class="center_align">
+                        
                         <div class="card">
+                            
                             <div class="card-content">
-                                <img class="responsive-img" style="max-width: 64px" src="img/login.png">                               
-                                </img>
+                                 <img class="responsive-img" style="max-width: 64px" src="img/login.png" align="middle"></img>
                                 <div class="left-align">
                                     <h:form id="login">
-                                        <p:inputText  placeholder="Usuário" id="usuario" type="text" class="validate" value="#{loginMB.usuario}"/>
-                                        <p:inputText  placeholder="Senha" id="senha" type="password" class="validate" value="#{loginMB.senha}"/>
+                                        <p:inputText  placeholder="Usuário" id="usuario" type="text" required="true" class="validate" value="#{loginMB.usuario}"/>
+                                        <p:inputText  placeholder="Senha" id="senha" type="password" required="true" class="validate" value="#{loginMB.senha}"/>
                                     </h:form>
                                 </div>
-                                <div class="center">
-                                    <p:commandButton ajax="false"  value="Login" actionListener="#{loginMB.validarlogin()}" class="btn-large pink" />
-                                    <p:commandButton ajax="false" value="Registrar" action="cadastrousuario.xhtml" class="btn-large pink" />
+                                <div class="row center">
+                                    <p:commandButton ajax="false"  value="Login" actionListener="#{loginMB.validarlogin()}" class="btn-large active orange black-text" />
                                     
-                                    #{loginMB.msgLogin}
+                                    <!--{loginMB.msgLogin}-->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            
         </h:form>
     </h:body>
 </html>
