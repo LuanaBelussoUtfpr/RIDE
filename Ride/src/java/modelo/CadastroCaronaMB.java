@@ -15,6 +15,8 @@ public class CadastroCaronaMB {
     private String localDestino;
     private Long vagasDisponiveis;
     private Long valorCarona;
+    private String dataCarona;
+    private String horarioCarona;
     private String cidade;
     private String estado;
 
@@ -61,6 +63,24 @@ public class CadastroCaronaMB {
         this.valorCarona = valorCarona;
     }
 
+    public String getDataCarona() {
+        return dataCarona;
+    }
+
+    public void setDataCarona(String dataCarona) {
+        this.dataCarona = dataCarona;
+    }
+
+    public String getHorarioCarona() {
+        return horarioCarona;
+    }
+
+    public void setHorarioCarona(String horarioCarona) {
+        this.horarioCarona = horarioCarona;
+    }
+    
+    
+
     public String getCidade() {
         return cidade;
     }
@@ -80,7 +100,8 @@ public class CadastroCaronaMB {
     public String criar(){
         System.out.println(estado);
         if (CadastroCaronaBean.criar(this.getDescricao(),this.getLocalOrigem(),this.getLocalDestino(),
-                this.getVagasDisponiveis(),this.getValorCarona(),this.getCidade(),this.getEstado()))
+                this.getVagasDisponiveis(),this.getValorCarona(),this.getDataCarona(),this.getHorarioCarona(),
+                this.getCidade(),this.getEstado()))
             return "Carona Cadastrada com Sucesso";
         else 
             return "Carona Não Cadastrada, Verifique!";

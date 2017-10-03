@@ -13,7 +13,7 @@ public class CadastroCaronaBean implements ICarona{
 
     @Override
     public boolean criar(String descricao, String localOrigem, String localDestino, 
-            Long vagasDisponiveis, Long valorCarona, String cidade, String estado) {
+            Long vagasDisponiveis, Long valorCarona,String dataCarona, String horarioCarona, String cidade, String estado) {
         
         Carona c = new Carona();
         
@@ -22,6 +22,8 @@ public class CadastroCaronaBean implements ICarona{
         c.setLocalDestino(localDestino);
         c.setVagasDisponiveis(vagasDisponiveis);
         c.setValorCarona(valorCarona);
+        c.setDataCarona(dataCarona);
+        c.setHorarioCarona(horarioCarona);
         c.setCidade(cidade);
         c.setEstado(estado);
         

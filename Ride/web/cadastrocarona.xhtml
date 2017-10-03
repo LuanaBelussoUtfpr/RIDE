@@ -29,47 +29,59 @@
                                 <div class="card-content">
                                     <div class="row">
                                         <div class="input-field col s6">
-                                            <p:inputText id="Descricao" type="text" class="validate" value="#{cadastroUsuarioMB.nome}"></p:inputText>
+                                            <p:inputText id="Descricao" type="text" class="validate" value="#{cadastroCaronaMB.descricao}"></p:inputText>
                                             <label for="descricao">Descrição:</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s6">
-                                            <p:inputText id="origem" type="text" class="validate" value="#{cadastroUsuarioMB.usuario}"></p:inputText>
+                                            <p:inputText id="origem" type="text" class="validate" value="#{cadastroCaronaMB.localOrigem}"></p:inputText>
                                             <label for="origem">Local de Origem</label>
                                         </div>
 
                                         <div class="input-field col s6">
-                                            <p:inputText id="destino" type="text" class="validate" value="#{cadastroUsuarioMB.email}" ></p:inputText>
+                                            <p:inputText id="destino" type="text" class="validate" value="#{cadastroCaronaMB.localDestino}" ></p:inputText>
                                             <label for="destino">Local de Destino</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s6">
-                                            <p:inputText id="vagas" type="number" class="validate" value="#{cadastroUsuarioMB.senha}"></p:inputText>
+                                            <p:inputText id="vagas" type="number" class="validate" value="#{cadastroCaronaMB.vagasDisponiveis}"></p:inputText>
                                             <label for="vagas">Vagas Disponíveis</label>
                                         </div>
 
                                         <div class="input-field col s6">
-                                            <p:inputText id="valor" type="number" class="validate"></p:inputText>
+                                            <p:inputText id="valor" type="number" class="validate" value="#{cadastroCaronaMB.valorCarona}"></p:inputText>
                                             <label for="valor">Valor da Carona</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s6">
-                                            <p:inputText id="cidade" type="text" class="validate" value="#{cadastroUsuarioMB.cidade}"></p:inputText>
+                                            <p:inputText id="horario" type="text" class="validate" value="#{cadastroCaronaMB.horarioCarona}"></p:inputText>
+                                            <label for="horario">Horário da Carona</label>
+                                        </div>   
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <p:inputText id="cidade" type="text" class="validate" value="#{cadastroCaronaMB.cidade}"></p:inputText>
                                             <label for="cidade">Cidade</label>
                                         </div>
 
                                         <div class="input-field col s6">
-                                            <p:inputText id="estado" type="text" class="validate" value="#{cadastroUsuarioMB.estado}"></p:inputText>
+                                            <p:inputText id="estado" type="text" class="validate" value="#{cadastroCaronaMB.estado}"></p:inputText>
                                             <label for="estado">Estado</label>
                                         </div>
+                                        <div class="input-field col s6">
+                                            <h6>Data da Carona</h6>
+                                            <p:inputText id="data" type="date" class="validate" value="#{cadastroCaronaMB.dataCarona}"></p:inputText>
+                                           
+                                        </div>
                                     </div>
-                                    <p:commandButton  ajax="false" value="Registrar" action="#{cadastroUsuarioMB.criar()}" class="btn-large active orange black-text" />
+                                    <p:commandButton  ajax="false" value="Registrar" action="#{cadastroCaronaMB.criar()}" class="btn-large active orange black-text" />
                                 </div>
                             </div>
                         </div>

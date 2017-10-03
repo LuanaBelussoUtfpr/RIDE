@@ -16,6 +16,8 @@ public class Carona implements Serializable {
     private String localDestino;
     private Long vagasDisponiveis;
     private Long valorCarona;
+    private String dataCarona;
+    private String horarioCarona;
     private String cidade;
     private String estado;
 
@@ -71,6 +73,23 @@ public class Carona implements Serializable {
         this.valorCarona = valorCarona;
     }
 
+    public String getDataCarona() {
+        return dataCarona;
+    }
+
+    public void setDataCarona(String dataCarona) {
+        this.dataCarona = dataCarona;
+    }
+
+    public String getHorarioCarona() {
+        return horarioCarona;
+    }
+
+    public void setHorarioCarona(String horarioCarona) {
+        this.horarioCarona = horarioCarona;
+    }
+    
+
     public String getCidade() {
         return cidade;
     }
@@ -83,7 +102,7 @@ public class Carona implements Serializable {
         return estado;
     }
 
-    public void setEstado(String stado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
