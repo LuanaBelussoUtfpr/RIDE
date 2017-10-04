@@ -12,7 +12,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 
 @NamedQueries({
-    @NamedQuery(name="Usuario.findByUsuarioSenha", query="SELECT u FROM Usuario u WHERE u.usuario = :user and u.senha = :senha")
+    @NamedQuery(name="Usuario.findByUsuarioSenha", query="SELECT 1 FROM Usuario u WHERE u.usuario = :user and u.senha = :senha")
 })
 
 @Entity
@@ -126,17 +126,11 @@ public class Usuario implements Serializable{
     }
     
     public int getusuariosenha(String user, String senha){
-        Usuario buscaUsuario;
-        
-        buscaUsuario = (Usuario) em.createNamedQuery("Usuario.findByUserSenha")
+        int ret = (int) em.createNamedQuery("Usuario.findByUserSenha")
                             .setParameter("usuario", user)
                             .setParameter("senha", senha)
                             .getSingleResult();
 
-        if (buscaUsuario != null){
-            return 1;
-        }else{
-            return -1;
-        }
+        return ret;
     }
 }
