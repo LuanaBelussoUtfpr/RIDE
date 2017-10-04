@@ -3,9 +3,17 @@ package entidade;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.PersistenceContext;
+
+@NamedQueries({
+    @NamedQuery(name="Usuario.findByUsuarioSenha", query="SELECT u FROM Usuario u WHERE u.usuario = :user and u.senha = :senha")
+})
 
 @Entity
 public class Usuario implements Serializable{
@@ -19,6 +27,9 @@ public class Usuario implements Serializable{
     private String cidade;
     private String estado;
     private String pais="Brasil";
+    
+    @PersistenceContext
+    private EntityManager em;
 
     public Usuario() {
         super();
@@ -114,6 +125,18 @@ public class Usuario implements Serializable{
         return true;
     }
     
-    
-    
+    public int getusuariosenha(String user, String senha){
+        Usuario buscaUsuario;
+        
+        buscaUsuario = (Usuario) em.createNamedQuery("Usuario.findByUserSenha")
+                            .setParameter("usuario", user)
+                            .setParameter("senha", senha)
+                            .getSingleResult();
+
+        if (buscaUsuario != null){
+            return 1;
+        }else{
+            return -1;
+        }
+    }
 }

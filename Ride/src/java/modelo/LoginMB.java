@@ -1,18 +1,12 @@
 package modelo;
-
 import entidade.Usuario;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.control.Alert;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.swing.JOptionPane;
 import negocio.ILogin;
 
 @ManagedBean
@@ -63,10 +57,10 @@ public class LoginMB {
         this.setMsgLogin("Validando login");
         int retorno;
         
-        retorno = 1;//LoginBean.login(this.getUsuario(), this.getSenha());
+        Usuario user = new Usuario();
+        retorno = user.getusuariosenha(this.getUsuario(), this.getSenha());
         
-       
-        if (this.getSenha().equals("1")){
+        if (retorno>0){
             this.setMsgLogin("Deu certo");
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");

@@ -2,7 +2,10 @@ package negocio;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateless
 public class LoginBean implements ILogin{
@@ -12,9 +15,6 @@ public class LoginBean implements ILogin{
     
     @Override
     public int login(String usuario, String senha) {
-        int teste;
-        teste = em.createQuery("SELECT 1 FROM usuario where usuario=" + usuario + " and senha=" + senha).getFirstResult();
-        System.out.println("luana " + teste);
-        return teste;
+        return 1;
     }
 }
