@@ -1,20 +1,29 @@
 package negocio;
 
+import entidade.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 @Stateless
-public class LoginBean implements ILogin{
-    
+public class LoginBean{
+
     @PersistenceContext
     private EntityManager em;
     
-    @Override
+    
     public int login(String usuario, String senha) {
-        return 1;
+        Usuario user = new Usuario();
+        em.persist(user);
+        
+        List<Usuario> lt;
+        lt = em.createQuery("SELECT u FROM Usuario u WHERE usuario = 'ju'", Usuario.class).getResultList();
+     
+        if(lt.size()>0){
+           return 1;
+        }else{
+            return -1;
+        }
     }
 }

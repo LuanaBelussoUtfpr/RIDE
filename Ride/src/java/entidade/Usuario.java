@@ -11,10 +11,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 
-@NamedQueries({
-    @NamedQuery(name="Usuario.findByUsuarioSenha", query="SELECT 1 FROM Usuario u WHERE u.usuario = :user and u.senha = :senha")
-})
-
 @Entity
 public class Usuario implements Serializable{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +24,6 @@ public class Usuario implements Serializable{
     private String estado;
     private String pais="Brasil";
     
-    @PersistenceContext
-    private EntityManager em;
-
     public Usuario() {
         super();
     }
@@ -123,14 +116,5 @@ public class Usuario implements Serializable{
             return false;
         }
         return true;
-    }
-    
-    public int getusuariosenha(String user, String senha){
-        int ret = (int) em.createNamedQuery("Usuario.findByUserSenha")
-                            .setParameter("usuario", user)
-                            .setParameter("senha", senha)
-                            .getSingleResult();
-
-        return ret;
     }
 }

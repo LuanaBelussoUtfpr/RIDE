@@ -57,8 +57,7 @@ public class LoginMB {
         this.setMsgLogin("Validando login");
         int retorno;
         
-        Usuario user = new Usuario();
-        retorno = user.getusuariosenha(this.getUsuario(), this.getSenha());
+        retorno = LoginBean.login(this.getUsuario(), this.getSenha());
         
         if (retorno>0){
             this.setMsgLogin("Deu certo");
