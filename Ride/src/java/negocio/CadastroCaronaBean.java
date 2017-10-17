@@ -2,6 +2,7 @@
 package negocio;
 
 import entidade.Carona;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -38,6 +39,11 @@ public class CadastroCaronaBean implements ICarona{
         }
         
         return false;
+    }
+
+    @Override
+    public List<Carona> consultar() {
+        return em.createQuery("SELECT * FROM CARONAS", Carona.class).getResultList();
     }
     
     
