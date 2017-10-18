@@ -4,6 +4,7 @@ import entidade.Carona;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import negocio.IBuscarCarona;
 import negocio.ICarona;
 
 @ManagedBean
@@ -22,6 +23,7 @@ public class CadastroCaronaMB {
 
     @EJB
     private ICarona CadastroCaronaBean;
+    
 
     public String getDescricao() {
         return descricao;

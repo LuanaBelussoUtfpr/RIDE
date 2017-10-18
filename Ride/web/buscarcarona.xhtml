@@ -30,32 +30,22 @@
                                         <div class="input-field col s6">
                                             <h6>Data:</h6>
                                             <p:inputText id="data" type="date" class="validate" value="#{cadastroUsuarioMB.nome}"></p:inputText>
-                                            
                                         </div>
+                                        <p:commandButton  ajax="false" value="Buscar Carona" action="#{cadastroUsuarioMB.criar()}" class="btn-large active orange black-text" />
                                     </div>
-
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <p:inputText id="origem" type="text" class="validate" value="#{cadastroUsuarioMB.usuario}"></p:inputText>
-                                            <label for="origem">Local de Origem</label>
-                                        </div>
-
-                                        <div class="input-field col s6">
-                                            <p:inputText id="destino" type="text" class="validate" value="#{cadastroUsuarioMB.email}" ></p:inputText>
-                                            <label for="destino">Local de Destino</label>
-                                        </div>
-                                    </div>
-
-                                        <div class="input-field col s6">
-                                            <p:inputText id="valor" type="number" class="validate"></p:inputText>
-                                            <label for="valor">Valor da Carona</label>
-                                        </div>
-                                    </div>
-                                <p:commandButton  ajax="false" value="Buscar Carona" action="#{cadastroUsuarioMB.criar()}" class="btn-large active orange black-text" />
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+         
+                <p:panel header="Caronas">
+                    <p:dataTable var="caronas" value="#{buscarCaronaMB.c}">
+                        <p:column headerText="ID">
+                            <h:outputText value="#{caronas.id}"/>
+                        </p:column>                    
+                    </p:dataTable>
+                </p:panel>
             </h:form>
     </h:body>
 </html>

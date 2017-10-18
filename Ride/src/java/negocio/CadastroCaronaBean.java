@@ -41,10 +41,7 @@ public class CadastroCaronaBean implements ICarona{
         return false;
     }
 
-    @Override
-    public List<Carona> consultar() {
-        return em.createQuery("SELECT * FROM CARONAS", Carona.class).getResultList();
-    }
+    
     
     
 }
