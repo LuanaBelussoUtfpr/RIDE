@@ -7,23 +7,28 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class LoginBean{
+public class LoginBean implements ILogin{
 
     @PersistenceContext
     private EntityManager em;
-    
-    
-    public int login(String usuario, String senha) {
-        Usuario user = new Usuario();
-        em.persist(user);
-        
-        List<Usuario> lt;
-        lt = em.createQuery("SELECT u FROM Usuario u WHERE usuario = 'ju'", Usuario.class).getResultList();
-     
-        if(lt.size()>0){
-           return 1;
-        }else{
-            return -1;
+
+    @Override
+    public int login(String user, String senha) {
+        List<Usuario> lista;        
+       lista = this.consultar();
+       
+       
+        if (lista.stream().anyMatch(e -> e.getUsuario().equalsIgnoreCase(user))) {
+            if (lista.stream().anyMatch(e -> e.getUsuario().equalsIgnoreCase(senha))){
+                return 1;
+            }
         }
+        return -1;
     }
+    
+    @Override
+    public List<Usuario> consultar() {
+        return em.createQuery("SELECT e FROM Usuario e WHERE e.usuario = :user and e.senha = :senha", Usuario.class).getResultList();
+    }
+    
 }

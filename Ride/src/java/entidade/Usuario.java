@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 
 @Entity
 public class Usuario implements Serializable{
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
     private String sobrenome;
@@ -26,6 +26,11 @@ public class Usuario implements Serializable{
     
     public Usuario() {
         super();
+    }
+
+    public Usuario(String usuario, String Senha) {
+        this.setUsuario(usuario);
+        this.setNome(nome);
     }
     
     public String getNome() {

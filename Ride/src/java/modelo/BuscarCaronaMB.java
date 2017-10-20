@@ -11,7 +11,7 @@ import negocio.IBuscarCarona;
 
 @ManagedBean
 @ViewScoped
-public class BuscarCaronaMB implements Serializable{
+public class BuscarCaronaMB{
     private IBuscarCarona BuscarCaronaBean;
     private List<Carona> caronas;
     
