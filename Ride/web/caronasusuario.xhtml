@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+     <ui:decorate template="menucadastrocarona.xhtml"></ui:decorate>
+     
+    <h:head>
+        <title>Caronas Agendadas</title>
+        
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    </h:head>
+     
+    <h:body>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+            <h:form class="col s12">
+                <div class="row">
+                    <div class="container">  
+                        <div class="center_align">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <h6>Usuario</h6>
+                                            <p:inputText id="data" type="date" class="validate" value=""></p:inputText>
+                                        </div>
+                                        <p:commandButton  ajax="false" value="Listar Caronas" action="" class="btn-large active orange black-text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+         
+                <p:panel header="Caronas">
+                    <p:dataTable var="caronas" value="#{buscarCaronaMB.c}">
+                        <p:column headerText="ID">
+                            <h:outputText value="#{caronas.id}"/>
+                        </p:column>                    
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+    </h:body>
+</html>
+
