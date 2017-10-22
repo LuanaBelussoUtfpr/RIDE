@@ -1,9 +1,14 @@
 package modelo;
 
-import entidade.Usuario;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.swing.JOptionPane;
 import negocio.IUsuario;
 
 @ManagedBean
@@ -86,7 +91,6 @@ public class CadastroUsuarioMB {
         this.email = email;
     }
     
-    
     public boolean validarsenha(String senha, String confirmarsenha){
         if(senha==confirmarsenha){
             return true;
@@ -95,13 +99,24 @@ public class CadastroUsuarioMB {
         }
     }
 
-    public String criar() {
+    public void criar() {
         System.out.println(pais);
         if (cadastroUsuarioBean.criar(this.getNome(), this.getSobrenome(), this.getUsuario(), this.getSenha(),
                 this.getEmail(), this.getCidade(), this.getEstado(), this.getPais())){
-            return "Usuário criado com sucesso!";
+            
+                try {
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }else{
-            return "Ocorreu erro ao criar o usuário!";}
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Ride",  "Falha ao cadastrar usuário!") );
+            
+        }
+           
+           
+           
     }
     
 }
