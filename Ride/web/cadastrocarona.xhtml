@@ -22,6 +22,8 @@
 
         <div class="row">
             <h:form class="col s12">
+                
+                <p:growl id="msgGlobal" sticky="true" /> 
                 <div class="row">
                     <div class="container">  
                         <div class="center_align">
@@ -81,7 +83,8 @@
                                            
                                         </div>
                                     </div>
-                                    <p:commandButton  ajax="false" value="Registrar" action="#{cadastroCaronaMB.criar()}" class="btn-large active orange black-text" />
+
+                                    <p:commandButton update="msgGlobal" value="Registrar" action="#{cadastroCaronaMB.criar()}" class="btn-large active orange black-text" />                                    
                                 </div>
                             </div>
                         </div>
