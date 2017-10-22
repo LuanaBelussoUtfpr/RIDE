@@ -4,7 +4,9 @@ import entidade.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 @Stateless
 public class LoginBean implements ILogin{
@@ -14,21 +16,28 @@ public class LoginBean implements ILogin{
 
     @Override
     public int login(String user, String senha) {
-        List<Usuario> lista;        
-       lista = this.consultar();
-       
-       
-        if (lista.stream().anyMatch(e -> e.getUsuario().equalsIgnoreCase(user))) {
-            if (lista.stream().anyMatch(e -> e.getUsuario().equalsIgnoreCase(senha))){
-                return 1;
-            }
+        List<Usuario> lista;     
+        lista = this.consultar(user, senha);
+              
+        if(lista.isEmpty()){
+            return -1;
+        }else{
+            return 1;
         }
-        return -1;
+       
     }
     
     @Override
-    public List<Usuario> consultar() {
-        return em.createQuery("SELECT e FROM Usuario e WHERE e.usuario = :user and e.senha = :senha", Usuario.class).getResultList();
+    public List<Usuario> consultar(String user, String password) {
+        try{
+            return em.createQuery("SELECT u FROM Usuario u where u.usuario = :user and u.senha= :password", Usuario.class)
+                .setParameter("user", user)
+                .setParameter("password", password).getResultList();
+            
+        }catch (NoResultException e){
+            return null;
+        }
+        
     }
     
 }
