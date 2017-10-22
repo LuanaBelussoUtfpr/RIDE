@@ -1,12 +1,16 @@
 package modelo;
 
+import entidade.Usuario;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 import negocio.ILogin;
 import negocio.LoginBean;
 
@@ -16,7 +20,7 @@ public class LoginMB {
     
     private String usuario;
     private String senha;
-    private String msgLogin="";
+    private String msgLogin="teste";
     
     @EJB
     private ILogin loginBean;
@@ -47,21 +51,22 @@ public class LoginMB {
         
     public void login(){
         this.setMsgLogin("Validando login");
-        int retorno;
         
-        retorno = loginBean.login(this.getUsuario(), this.getSenha());
-        
-        if (retorno>0){
-            this.setMsgLogin("Deu certo");
+        List<Usuario> lista;     
+        lista = loginBean.consultar(this.getUsuario(), this.getSenha());
+                      
+        if(!lista.isEmpty()){
+            
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
             } catch (IOException ex) {
                 Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
-            this.setMsgLogin("Nao Deu certo");
+            this.setMsgLogin("Usuário e Senha Inválidos!");
         }
     }
+    
 
     
 }
