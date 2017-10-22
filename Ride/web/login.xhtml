@@ -26,13 +26,15 @@
                                  <img class="responsive-img" style="max-width: 64px" src="img/login.png" align="middle"></img>
                                 <div class="left-align">
                                     <h:form id="login">
-                                        <p:inputText  placeholder="Usuário" id="usuario" type="text" required="true" class="validate" value="#{loginMB.usuario}"/>
-                                        <p:inputText  placeholder="Senha" id="senha" type="password" required="true" class="validate" value="#{loginMB.senha}"/>
+                                        <form action="index.xhtml" method="post">
+                                            <p:inputText  placeholder="Usuário" id="usuario" type="text" required="true" class="validate" value="#{loginMB.usuario}"/>
+                                            <p:inputText  placeholder="Senha" id="senha" type="password" required="true" class="validate" value="#{loginMB.senha}"/>
+                                            #{loginMB.msgLogin}
+                                        </form>
                                     </h:form>
                                 </div>
                                 <div class="row center">
-                                    <p:commandButton ajax="false"  value="Login" actionListener="#{loginMB.login()}" class="btn-large active orange black-text" />
-                                    
+                                    <p:commandButton type="submit" ajax="false"  value="Login" actionListener="#{loginMB.login()}" class="btn-large active orange black-text" />
                                 </div>
                             </div>
                         </div>
