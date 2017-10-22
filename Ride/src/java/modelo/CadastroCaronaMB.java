@@ -1,10 +1,10 @@
 
 package modelo;
-import entidade.Carona;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import negocio.IBuscarCarona;
+import javax.faces.context.FacesContext;
 import negocio.ICarona;
 
 @ManagedBean
@@ -24,7 +24,6 @@ public class CadastroCaronaMB {
     @EJB
     private ICarona CadastroCaronaBean;
     
-
     public String getDescricao() {
         return descricao;
     }
@@ -80,8 +79,6 @@ public class CadastroCaronaMB {
     public void setHorarioCarona(String horarioCarona) {
         this.horarioCarona = horarioCarona;
     }
-    
-    
 
     public String getCidade() {
         return cidade;
@@ -99,14 +96,17 @@ public class CadastroCaronaMB {
         this.estado = estado;
     }
     
-    public String criar(){
-        System.out.println(estado);
+    public void criar(){
+        FacesContext context = FacesContext.getCurrentInstance();
+         
         if (CadastroCaronaBean.criar(this.getDescricao(),this.getLocalOrigem(),this.getLocalDestino(),
                 this.getVagasDisponiveis(),this.getValorCarona(),this.getDataCarona(),this.getHorarioCarona(),
-                this.getCidade(),this.getEstado()))
-            return "Carona Cadastrada com Sucesso";
-        else 
-            return "Carona Não Cadastrada, Verifique!";
-        
+                this.getCidade(),this.getEstado())){
+            
+               context.addMessage(null, new FacesMessage("Carona registrada com sucesso!", ""));
+               
+        }else{
+            context.addMessage(null, new FacesMessage("Falha ao registrar carona!", ""));
+        }   
     }
 }
