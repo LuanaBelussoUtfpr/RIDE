@@ -111,7 +111,7 @@ public class CadastroUsuarioMB {
                 }
         }else{
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Ride",  "Falha ao cadastrar usuário!") );
+            context.addMessage(null, new FacesMessage("Falha ao cadastrar usuário!",  "") );
             
         }
            
