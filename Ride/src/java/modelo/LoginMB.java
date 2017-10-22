@@ -20,7 +20,7 @@ public class LoginMB {
     
     private String usuario;
     private String senha;
-    private String msgLogin="teste";
+    private String msgLogin="";
     
     @EJB
     private ILogin loginBean;
@@ -57,8 +57,12 @@ public class LoginMB {
                       
         if(!lista.isEmpty()){
             
+            session secao = session.getInstance();
+            secao.setIdusuario(lista.get(0).getId());
+            secao.setUsuario(lista.get(0).getUsuario());
+            
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("telainicial.xhtml");
             } catch (IOException ex) {
                 Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, ex);
             }
