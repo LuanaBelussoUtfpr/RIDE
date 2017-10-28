@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <ui:decorate template="menulogin.xhtml"></ui:decorate>
+    <ui:decorate template="menuindex.xhtml"></ui:decorate>
     
     <h:head>
         <title>Login</title>
@@ -26,13 +26,15 @@
                                  <img class="responsive-img" style="max-width: 64px" src="img/login.png" align="middle"></img>
                                 <div class="left-align">
                                     <h:form id="login">
-                                        <p:inputText  placeholder="Usuário" id="usuario" type="text" required="true" class="validate" value="#{loginMB.usuario}"/>
-                                        <p:inputText  placeholder="Senha" id="senha" type="password" required="true" class="validate" value="#{loginMB.senha}"/>
+                                        <form action="index.xhtml" method="post">
+                                            <p:inputText  placeholder="Usuário" id="usuario" type="text" required="true" class="validate" value="#{loginMB.usuario}"/>
+                                            <p:inputText  placeholder="Senha" id="senha" type="password" required="true" class="validate" value="#{loginMB.senha}"/>
+                                            #{loginMB.msgLogin}
+                                        </form>
                                     </h:form>
                                 </div>
                                 <div class="row center">
-                                    <p:commandButton ajax="false"  value="Login" actionListener="#{loginMB.validarlogin()}" class="btn-large active orange black-text" />
-                                    <!--{loginMB.msgLogin}-->
+                                    <p:commandButton type="submit" ajax="false"  value="Login" actionListener="#{loginMB.login()}" class="btn-large active orange black-text" />
                                 </div>
                             </div>
                         </div>

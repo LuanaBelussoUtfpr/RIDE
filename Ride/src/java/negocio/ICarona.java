@@ -1,9 +1,8 @@
 package negocio;
 
-import entidade.Carona;
-import java.util.List;
+import javax.ejb.Local;
 
-
+@Local
 public interface ICarona {
     boolean criar (String descricao, String localOrigem, String localDestino, 
             Long vagasDisponiveis, Long valorCarona,String dataCarona, String horarioCarona,

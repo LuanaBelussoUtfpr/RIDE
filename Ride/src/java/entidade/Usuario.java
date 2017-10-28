@@ -3,13 +3,9 @@ package entidade;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.PersistenceContext;
 
 @Entity
 public class Usuario implements Serializable{
@@ -26,6 +22,11 @@ public class Usuario implements Serializable{
     
     public Usuario() {
         super();
+    }
+
+    public Usuario(String usuario, String Senha) {
+        this.setUsuario(usuario);
+        this.setNome(nome);
     }
     
     public String getNome() {
@@ -90,6 +91,10 @@ public class Usuario implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Long getId() {
+        return id;
     }
     
 
