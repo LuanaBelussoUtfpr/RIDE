@@ -5,11 +5,11 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-      <ui:decorate template="menucadastrocarona.xhtml"></ui:decorate>
-      
+    <ui:decorate template="menubuscarcarona.xhtml"></ui:decorate>
+
     <h:head>
         <title>RIDE - Buscar Carona</title>
-        
+
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
 
@@ -20,53 +20,55 @@
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
-            <h:form class="col s12">
-                <div class="row">
-                    <div class="container">  
-                        <div class="center_align">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <h6>Data:</h6>
-                                            <p:inputText id="data" type="date" class="validate" value="#{buscarCaronaMB.dt}"></p:inputText>
-                                        </div>
-                                        <p:commandButton  ajax="false" value="Buscar Carona" class="btn-large active orange black-text" />
+        <h:form class="col s12">
+            <div class="row">
+                <div class="container">  
+                    <div class="center_align">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <h6>Data:</h6>
+                                        <p:inputText id="data" type="date" class="validate" value="#{buscarCaronaMB.dt}"></p:inputText>
                                     </div>
+                                    <div align="right">
+                                        <p:commandButton ajax="false" value="Buscar Carona" class="btn waves-red waves-red black-text" />  
+                                    </div>  
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-         
-                <p:panel header="Caronas">
-                    <p:dataTable var="carona" value="#{buscarCaronaMB.consultar()}">
-                        <p:column headerText="Descrição">
-                            <h:outputText value="#{carona.descricao}"/>
-                        </p:column>  
-                        <p:column headerText="Data">
-                            <h:outputText value="#{carona.dataCarona}"/>
-                        </p:column>
-                        <p:column headerText="Local Origem">
-                            <h:outputText value="#{carona.localOrigem}"/>
-                        </p:column>
-                        <p:column headerText="Local Destino">
-                            <h:outputText value="#{carona.localDestino}"/>
-                        </p:column>
-                        <p:column headerText="Vagas Disponíveis">
-                            <h:outputText value="#{carona.vagasDisponiveis}"/>
-                        </p:column>
-                        <p:column headerText="Valor Carona">
-                            <h:outputText value="#{carona.valorCarona}"/>
-                        </p:column>
-                        <p:column headerText="Cidade">
-                            <h:outputText value="#{carona.cidade}"/>
-                        </p:column>
-                        <p:column headerText="Estado">
-                            <h:outputText value="#{carona.estado}"/>
-                        </p:column>
-                    </p:dataTable>
-                </p:panel>
-            </h:form>
+            </div>
+
+            <p:panel header="Caronas">
+                <p:dataTable var="carona" value="#{buscarCaronaMB.consultar()}">
+                    <p:column headerText="Descrição">
+                        <h:outputText value="#{carona.descricao}"/>
+                    </p:column>  
+                    <p:column headerText="Data">
+                        <h:outputText value="#{carona.dataCarona}"/>
+                    </p:column>
+                    <p:column headerText="Local Origem">
+                        <h:outputText value="#{carona.localOrigem}"/>
+                    </p:column>
+                    <p:column headerText="Local Destino">
+                        <h:outputText value="#{carona.localDestino}"/>
+                    </p:column>
+                    <p:column headerText="Vagas Disponíveis">
+                        <h:outputText value="#{carona.vagasDisponiveis}"/>
+                    </p:column>
+                    <p:column headerText="Valor Carona">
+                        <h:outputText value="#{carona.valorCarona}"/>
+                    </p:column>
+                    <p:column headerText="Cidade">
+                        <h:outputText value="#{carona.cidade}"/>
+                    </p:column>
+                    <p:column headerText="Estado">
+                        <h:outputText value="#{carona.estado}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
