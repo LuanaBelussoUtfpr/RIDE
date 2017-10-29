@@ -18,8 +18,12 @@ public class Carona implements Serializable {
     private Long valorCarona;
     private String dataCarona;
     private String horarioCarona;
-    private String cidade;
-    private String estado;
+    private String cidadeOrigem;
+    private String estadoOrigem;
+    private String paisOrigem;
+    private String cidadeDestino;
+    private String estadoDestino;
+    private String paisDestino;
 
     public Carona() {
         super();
@@ -88,23 +92,55 @@ public class Carona implements Serializable {
     public void setHorarioCarona(String horarioCarona) {
         this.horarioCarona = horarioCarona;
     }
+
+    public String getCidadeOrigem() {
+        return cidadeOrigem;
+    }
+
+    public void setCidadeOrigem(String cidadeOrigem) {
+        this.cidadeOrigem = cidadeOrigem;
+    }
+
+    public String getEstadoOrigem() {
+        return estadoOrigem;
+    }
+
+    public void setEstadoOrigem(String estadoOrigem) {
+        this.estadoOrigem = estadoOrigem;
+    }
+
+    public String getPaisOrigem() {
+        return paisOrigem;
+    }
+
+    public void setPaisOrigem(String paisOrigem) {
+        this.paisOrigem = paisOrigem;
+    }
+
+    public String getCidadeDestino() {
+        return cidadeDestino;
+    }
+
+    public void setCidadeDestino(String cidadeDestino) {
+        this.cidadeDestino = cidadeDestino;
+    }
+
+    public String getEstadoDestino() {
+        return estadoDestino;
+    }
+
+    public void setEstadoDestino(String estadoDestino) {
+        this.estadoDestino = estadoDestino;
+    }
+
+    public String getPaisDestino() {
+        return paisDestino;
+    }
+
+    public void setPaisDestino(String paisDestino) {
+        this.paisDestino = paisDestino;
+    }
     
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
 
     @Override
     public int hashCode() {
@@ -129,10 +165,5 @@ public class Carona implements Serializable {
             return false;
         }
         return true;
-    }
-    
-    
-    
-    
-    
+    }   
 }
