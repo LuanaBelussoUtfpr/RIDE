@@ -13,7 +13,9 @@ public class CadastroCaronaBean implements ICarona{
 
     @Override
     public boolean criar(String descricao, String localOrigem, String localDestino, 
-            Long vagasDisponiveis, Long valorCarona,String dataCarona, String horarioCarona, String cidade, String estado) {
+            Long vagasDisponiveis, Long valorCarona,String dataCarona, String horarioCarona, 
+            String cidadeOrigem, String estadoOrigem, String paisOrigem,
+            String cidadeDestino, String estadoDestino, String paisDestino) {
         
         Carona c = new Carona();
         
@@ -24,23 +26,20 @@ public class CadastroCaronaBean implements ICarona{
         c.setValorCarona(valorCarona);
         c.setDataCarona(dataCarona);
         c.setHorarioCarona(horarioCarona);
-        c.setCidade(cidade);
-        c.setEstado(estado);
-        
-        System.out.println(descricao);
+        c.setCidadeOrigem(cidadeOrigem);
+        c.setEstadoOrigem(estadoOrigem);
+        c.setPaisOrigem(paisOrigem);
+        c.setCidadeDestino(cidadeDestino);
+        c.setEstadoDestino(estadoDestino);
+        c.setPaisDestino(paisDestino);
         
         try {
             em.persist(c);
             return true;
-            
         } catch (Exception e) {
             System.out.println("ERRO");
         }
         
         return false;
-    }
-
-    
-    
-    
+    }  
 }
