@@ -9,6 +9,9 @@
     <h:head>
         <title>RIDE - Cadastro Carona</title>
         
+        <script src="js/import_autocomplete.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/import_autocomplete.css" /> 
+        
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
 
@@ -21,7 +24,7 @@
         <script type="text/javascript" src="js/materialize.min.js"></script>
 
         <div class="row">
-            <h:form class="col s12">
+            <h:form class="col s12" id="form">
                 
                 <p:growl id="msgGlobal" sticky="true" /> 
                 <div class="row">
@@ -68,19 +71,21 @@
                                     </div>
                                     
                                     <div class="row">
-                                        <div class="input-field col s6">
-                                            <p:inputText id="cidade" type="text" class="validate" value="#{cadastroCaronaMB.cidade}"></p:inputText>
-                                            <label for="cidade">Cidade</label>
+                                        <div class="input-field col s6">                                            
+                                            <div class="inline">
+                                                <p:inputText value="#{cadastroCaronaMB.adress}" id="address" class="address center-align" placeholder="Endereço"></p:inputText >
+                                            </div>
+                                            
+                                            <div style="display: none" class="inline">
+                                                <p:inputText value="#{cadastroCaronaMB.cidade}" id="cidade"/>
+                                                <p:inputText value="#{cadastroCaronaMB.estado}" id="estado" />
+                                                <p:inputText value="#{cadastroCaronaMB.pais}" id="pais" />
+                                            </div>
                                         </div>
 
                                         <div class="input-field col s6">
-                                            <p:inputText id="estado" type="text" class="validate" value="#{cadastroCaronaMB.estado}"></p:inputText>
-                                            <label for="estado">Estado</label>
-                                        </div>
-                                        <div class="input-field col s6">
                                             <h6>Data da Carona</h6>
                                             <p:inputText id="data" type="date" class="validate" value="#{cadastroCaronaMB.dataCarona}"></p:inputText>
-                                           
                                         </div>
                                     </div>
 
@@ -93,4 +98,20 @@
             </h:form>
         </div>
     </h:body>
+      
+    <script>
+          TeleportAutocomplete.init('.address').on('change', (value) => {
+              try {
+                  cidade = value.name;
+                  estado = value.admin1Division;
+                  pais = value.country;
+                  console.log(cidade, estado, pais, rua);
+                  document.getElementById("form:cidade").value = cidade;
+                  document.getElementById("form:estado").value = estado;
+                  document.getElementById("form:pais").value = pais;
+              } catch (e) {
+                  console.log("endereço não encontrado.");
+              }
+          });
+      </script>
 </html>
