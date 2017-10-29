@@ -7,7 +7,7 @@
       <ui:decorate template="menucadastrocarona.xhtml"></ui:decorate>
       
     <h:head>
-        <title>RIDE - Cadastro Carona</title>
+        <title>RIDE</title>
         
         <script src="js/import_autocomplete.js"></script>
         <link type="text/css" rel="stylesheet" href="css/import_autocomplete.css" /> 
@@ -33,63 +33,78 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="row">
-                                        <div class="input-field col s6">
+                                        <div class="input-field col s10">
+                                            <p>Descrição:</p>
                                             <p:inputText id="Descricao" type="text" class="validate" value="#{cadastroCaronaMB.descricao}"></p:inputText>
-                                            <label for="descricao">Descrição:</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s6">
+                                            <p>Local de Saída:</p>
                                             <p:inputText id="origem" type="text" class="validate" value="#{cadastroCaronaMB.localOrigem}"></p:inputText>
-                                            <label for="origem">Local de Origem</label>
                                         </div>
 
                                         <div class="input-field col s6">
+                                            <p>Local de Chegada:</p>
                                             <p:inputText id="destino" type="text" class="validate" value="#{cadastroCaronaMB.localDestino}" ></p:inputText>
-                                            <label for="destino">Local de Destino</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s6">
+                                            <p>Vagas Disponíveis:</p>
                                             <p:inputText id="vagas" type="number" class="validate" value="#{cadastroCaronaMB.vagasDisponiveis}"></p:inputText>
-                                            <label for="vagas">Vagas Disponíveis</label>
                                         </div>
 
                                         <div class="input-field col s6">
+                                            <p>Valor da Carona:</p>
                                             <p:inputText id="valor" type="number" class="validate" value="#{cadastroCaronaMB.valorCarona}"></p:inputText>
-                                            <label for="valor">Valor da Carona</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s6">
+                                            <p>Horário da Carona:</p>
                                             <p:inputText id="horario" type="text" class="validate" value="#{cadastroCaronaMB.horarioCarona}"></p:inputText>
-                                            <label for="horario">Horário da Carona</label>
                                         </div>   
+                                        
+                                         <div class="input-field col s6">
+                                            <p>Data da Carona:</p>
+                                            <p:inputText id="data" type="date" class="validate" value="#{cadastroCaronaMB.dataCarona}"></p:inputText>
+                                        </div>
                                     </div>
                                     
                                     <div class="row">
                                         <div class="input-field col s6">                                            
                                             <div class="inline">
-                                                <p:inputText value="#{cadastroCaronaMB.adress}" id="address" class="address center-align" placeholder="Endereço"></p:inputText >
+                                                <p>Cidade de Origem:</p>
+                                                <p:inputText value="#{cadastroCaronaMB.address}" id="address" class="address center-align"></p:inputText >
                                             </div>
                                             
                                             <div style="display: none" class="inline">
-                                                <p:inputText value="#{cadastroCaronaMB.cidade}" id="cidade"/>
-                                                <p:inputText value="#{cadastroCaronaMB.estado}" id="estado" />
-                                                <p:inputText value="#{cadastroCaronaMB.pais}" id="pais" />
+                                                <p:inputText value="#{cadastroCaronaMB.cidadeOrigem}" id="cidadeOrigem"/>
+                                                <p:inputText value="#{cadastroCaronaMB.estadoOrigem}" id="estadoOrigem" />
+                                                <p:inputText value="#{cadastroCaronaMB.paisOrigem}" id="paisOrigem" />
+                                            </div>
+                                        </div>  
+                                        
+                                        <div class="input-field col s6">                                            
+                                            <div class="inline">
+                                                <p>Cidade de Destino:</p>
+                                                <p:inputText value="#{cadastroCaronaMB.enderecoDestino}" id="enderecoDestino" class="enderecoDestino left-align"></p:inputText >
+                                            </div>
+                                            
+                                            <div style="display: none" class="inline">
+                                                <p:inputText value="#{cadastroCaronaMB.cidadeDestino}" id="cidadeDestino"/>
+                                                <p:inputText value="#{cadastroCaronaMB.estadoDestino}" id="estadoDestino" />
+                                                <p:inputText value="#{cadastroCaronaMB.paisDestino}" id="paisDestino" />
                                             </div>
                                         </div>
-
-                                        <div class="input-field col s6">
-                                            <h6>Data da Carona</h6>
-                                            <p:inputText id="data" type="date" class="validate" value="#{cadastroCaronaMB.dataCarona}"></p:inputText>
-                                        </div>
                                     </div>
-                                    <div align="right">
-                                    <p:commandButton update="msgGlobal" value="Cadastrar Carona" action="#{cadastroCaronaMB.criar()}" 
+                                    
+                                    <div align="left">
+                                        <p:commandButton update="msgGlobal" value="Cadastrar Carona" action="#{cadastroCaronaMB.criar()}" 
                                                      class="btn waves-red waves-red black-text" />     
                                     </div>
                                 </div>
@@ -104,13 +119,25 @@
     <script>
           TeleportAutocomplete.init('.address').on('change', (value) => {
               try {
-                  cidade = value.name;
-                  estado = value.admin1Division;
-                  pais = value.country;
-                  console.log(cidade, estado, pais, rua);
-                  document.getElementById("form:cidade").value = cidade;
-                  document.getElementById("form:estado").value = estado;
-                  document.getElementById("form:pais").value = pais;
+                  cidadeOrigem = value.name;
+                  estadoOrigem = value.admin1Division;
+                  paisOrigem = value.country;
+                  document.getElementById("form:cidadeOrigem").value = cidadeOrigem;
+                  document.getElementById("form:estadoOrigem").value = estadoOrigem;
+                  document.getElementById("form:paisOrigem").value = paisOrigem;
+              } catch (e) {
+                  console.log("endereço não encontrado.");
+              }
+          });
+          
+         TeleportAutocomplete.init('.enderecoDestino').on('change', (value) => {
+              try {
+                  cidadeDestino = value.name;
+                  estadoDestino = value.admin1Division;
+                  paisDestino = value.country;
+                  document.getElementById("form:cidadeDestino").value = cidadeDestino;
+                  document.getElementById("form:estadoDestino").value = estadoDestino;
+                  document.getElementById("form:paisDestino").value = paisDestino;
               } catch (e) {
                   console.log("endereço não encontrado.");
               }
