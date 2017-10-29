@@ -4,17 +4,17 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <ui:decorate template="menuindex.xhtml"></ui:decorate>
-    
+    <ui:decorate template="menulogin.xhtml"></ui:decorate>
+
     <h:head>
         <title>Login</title>
-        
+
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
 
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-          
+
     </h:head>
     <h:body>
         <h:form>
@@ -22,21 +22,24 @@
                 <div class="container">
                     <div class="center_align">
                         <div class="card">
-                            <div class="card-content">
-                                 <img class="responsive-img" style="max-width: 64px" src="img/login.png" align="middle"></img>
-                                <div class="left-align">
-                                    <h:form id="login">
-                                        <form action="index.xhtml" method="post">
-                                            <p:inputText  placeholder="Usuário" id="usuario" type="text" required="true" class="validate" value="#{loginMB.usuario}"/>
-                                            <p:inputText  placeholder="Senha" id="senha" type="password" required="true" class="validate" value="#{loginMB.senha}"/>
-                                            #{loginMB.msgLogin}
-                                        </form>
-                                    </h:form>
-                                </div>
-                                <div class="row center">
-                                    <p:commandButton type="submit" ajax="false"  value="Login" actionListener="#{loginMB.login()}" class="btn-large active orange black-text" />
-                                </div>
+                            <div class="center">
+                                <img class="responsive-img" style="max-width: 64px" src="img/login2.png"></img>
                             </div>
+                            <div class="left-align">
+                                <h:form id="login">
+                                    <form action="index.xhtml" method="post">
+                                        <p:inputText  placeholder="Usuário" id="usuario" type="text" required="true" class="validate" value="#{loginMB.usuario}"/>
+                                        <p:inputText  placeholder="Senha" id="senha" type="password" required="true" class="validate" value="#{loginMB.senha}"/>
+                                        #{loginMB.msgLogin}
+                                    </form>
+                                </h:form>
+                            </div>
+                            <div class="row center">
+                                <p:commandButton ajax ="false" type="submit" value="Login" actionListener="#{loginMB.login()}" 
+                                                 class="btn waves-red waves-red black-text" /> 
+
+                            </div>
+
                         </div>
                     </div>
                 </div>

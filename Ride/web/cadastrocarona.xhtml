@@ -88,8 +88,10 @@
                                             <p:inputText id="data" type="date" class="validate" value="#{cadastroCaronaMB.dataCarona}"></p:inputText>
                                         </div>
                                     </div>
-
-                                    <p:commandButton update="msgGlobal" value="Registrar" action="#{cadastroCaronaMB.criar()}" class="btn-large active orange black-text" />                                    
+                                    <div align="right">
+                                    <p:commandButton update="msgGlobal" value="Cadastrar Carona" action="#{cadastroCaronaMB.criar()}" 
+                                                     class="btn waves-red waves-red black-text" />     
+                                    </div>
                                 </div>
                             </div>
                         </div>
