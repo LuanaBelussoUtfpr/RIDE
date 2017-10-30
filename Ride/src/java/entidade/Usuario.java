@@ -16,9 +16,6 @@ public class Usuario implements Serializable{
     private String usuario;
     private String senha;
     private String email;
-    private String cidade;
-    private String estado;
-    private String pais="Brasil";
     
     public Usuario() {
         super();
@@ -59,30 +56,6 @@ public class Usuario implements Serializable{
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
     }
 
     public String getEmail() {
