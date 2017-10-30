@@ -24,47 +24,19 @@ public class CadastroCaronaMB {
     private String cidadeDestino;
     private String estadoDestino;
     private String paisDestino;
-    private String address;
+    private String enderecoOrigem;
     private String enderecoDestino;
-    private String cidade;
-    private String estado;
-    private String pais;
    
    
     @EJB
     private ICarona CadastroCaronaBean;
 
-    public String getCidade() {
-        return cidade;
+    public String getEnderecoOrigem() {
+        return enderecoOrigem;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-    
-    
-     public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEnderecoOrigem(String enderecoOrigem) {
+        this.enderecoOrigem = enderecoOrigem;
     }
     
     public String getDescricao() {
