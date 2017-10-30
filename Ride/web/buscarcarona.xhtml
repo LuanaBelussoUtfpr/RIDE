@@ -8,7 +8,7 @@
     <ui:decorate template="menubuscarcarona.xhtml"></ui:decorate>
 
     <h:head>
-        <title>RIDE - Buscar Carona</title>
+        <title>RIDE</title>
 
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
@@ -62,10 +62,10 @@
                         <h:outputText value="#{carona.valorCarona}"/>
                     </p:column>
                     <p:column headerText="Cidade">
-                        <h:outputText value="#{carona.cidade}"/>
+                        <h:outputText value="#{carona.cidadeOrigem}"/>
                     </p:column>
                     <p:column headerText="Estado">
-                        <h:outputText value="#{carona.estado}"/>
+                        <h:outputText value="#{carona.estadoOrigem}"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>

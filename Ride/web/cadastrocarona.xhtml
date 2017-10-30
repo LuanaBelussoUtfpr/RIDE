@@ -25,7 +25,6 @@
 
         <div class="row">
             <h:form class="col s12" id="form">
-                
                 <p:growl id="msgGlobal" sticky="true" /> 
                 <div class="row">
                     <div class="container">  
@@ -33,45 +32,46 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="row">
-                                        <div class="input-field col s10">
-                                            <p>Descrição:</p>
-                                            <p:inputText id="Descricao" type="text" class="validate" value="#{cadastroCaronaMB.descricao}"></p:inputText>
+                                        <div class="input-field col s12">
+                                            <p>Descrição da Carona:</p>
+                                            <p:inputText id="Descricao" type="text" required="true" requiredMessage="Informe a descrição da carona!" value="#{cadastroCaronaMB.descricao}"></p:inputText>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s6">
                                             <p>Local de Saída:</p>
-                                            <p:inputText id="origem" type="text" class="validate" value="#{cadastroCaronaMB.localOrigem}"></p:inputText>
+                                            <p:inputText id="origem" type="text" value="#{cadastroCaronaMB.localOrigem}"></p:inputText>
                                         </div>
 
                                         <div class="input-field col s6">
                                             <p>Local de Chegada:</p>
-                                            <p:inputText id="destino" type="text" class="validate" value="#{cadastroCaronaMB.localDestino}" ></p:inputText>
+                                            <p:inputText id="destino" type="text" value="#{cadastroCaronaMB.localDestino}" ></p:inputText>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s6">
                                             <p>Vagas Disponíveis:</p>
-                                            <p:inputText id="vagas" type="number" class="validate" value="#{cadastroCaronaMB.vagasDisponiveis}"></p:inputText>
+                                            <p:inputText id="vagas" type="number" required="true" requiredMessage="Informe as vagas disponíveis!" value="#{cadastroCaronaMB.vagasDisponiveis}"></p:inputText>
                                         </div>
 
                                         <div class="input-field col s6">
                                             <p>Valor da Carona:</p>
-                                            <p:inputText id="valor" type="number" class="validate" value="#{cadastroCaronaMB.valorCarona}"></p:inputText>
+                                            <p:inputText id="valor" type="number" required="true" requiredMessage="Informe o valor da carona!" value="#{cadastroCaronaMB.valorCarona}"></p:inputText>
+                                             
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s6">
-                                            <p>Horário da Carona:</p>
-                                            <p:inputText id="horario" type="text" class="validate" value="#{cadastroCaronaMB.horarioCarona}"></p:inputText>
+                                            <p>Horário de Saída</p>
+                                            <p:inputText id="horario" required="true" requiredMessage="Informe o horário de saída!" value="#{cadastroCaronaMB.horarioCarona}"></p:inputText>
                                         </div>   
                                         
                                          <div class="input-field col s6">
                                             <p>Data da Carona:</p>
-                                            <p:inputText id="data" type="date" class="validate" value="#{cadastroCaronaMB.dataCarona}"></p:inputText>
+                                            <p:inputText id="data" type="date" required="true" requiredMessage="Informe a data da carona!" value="#{cadastroCaronaMB.dataCarona}"></p:inputText>
                                         </div>
                                     </div>
                                     
@@ -79,7 +79,7 @@
                                         <div class="input-field col s6">                                            
                                             <div class="inline">
                                                 <p>Cidade de Origem:</p>
-                                                <p:inputText value="#{cadastroCaronaMB.address}" id="address" class="address center-align"></p:inputText >
+                                                <p:inputText value="#{cadastroCaronaMB.enderecoOrigem}" required="true" requiredMessage="Informe a cidade de origem!" id="enderecoOrigem" class="enderecoOrigem center-align"></p:inputText >
                                             </div>
                                             
                                             <div style="display: none" class="inline">
@@ -92,7 +92,7 @@
                                         <div class="input-field col s6">                                            
                                             <div class="inline">
                                                 <p>Cidade de Destino:</p>
-                                                <p:inputText value="#{cadastroCaronaMB.enderecoDestino}" id="enderecoDestino" class="enderecoDestino left-align"></p:inputText >
+                                                <p:inputText value="#{cadastroCaronaMB.enderecoDestino}" required="true" requiredMessage="Informe a cidade de detino!" id="enderecoDestino" class="enderecoDestino left-align"></p:inputText >
                                             </div>
                                             
                                             <div style="display: none" class="inline">
@@ -105,7 +105,7 @@
                                     
                                     <div align="left">
                                         <p:commandButton update="msgGlobal" value="Cadastrar Carona" action="#{cadastroCaronaMB.criar()}" 
-                                                     class="btn waves-red waves-red black-text" />     
+                                                     class="btn-large waves-effect waves-light"/>     
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
     </h:body>
       
     <script>
-          TeleportAutocomplete.init('.address').on('change', (value) => {
+          TeleportAutocomplete.init('.enderecoOrigem').on('change', (value) => {
               try {
                   cidadeOrigem = value.name;
                   estadoOrigem = value.admin1Division;

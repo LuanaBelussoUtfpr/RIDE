@@ -7,8 +7,7 @@
     <ui:decorate template="menucadastro.xhtml"></ui:decorate>
 
     <h:head>
-        <title>Cadastro Usuário</title>
-
+        <title>RIDE</title>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
 
@@ -30,55 +29,45 @@
                                 <div class="card-content">
                                     <div class="row">
                                         <div class="input-field col s6">
-                                            <p:inputText id="Nome" type="text" class="validate" value="#{cadastroUsuarioMB.nome}"></p:inputText>
+                                            <p:inputText id="Nome" type="text" required="true" requiredMessage="Informe seu nome!" value="#{cadastroUsuarioMB.nome}"></p:inputText>
                                             <label for="nome">Nome</label>
                                         </div>
                                         <div class="input-field col s6">
-                                            <p:inputText id="sobrenome" type="text" class="validate" value="#{cadastroUsuarioMB.sobrenome}"></p:inputText>
+                                            <p:inputText id="sobrenome" type="text" required="true" requiredMessage="Informe seu sobrenome!" value="#{cadastroUsuarioMB.sobrenome}"></p:inputText>
                                             <label for="sobrenome">Sobrenome</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s6">
-                                            <p:inputText id="usuario" type="text" class="validate" value="#{cadastroUsuarioMB.usuario}"></p:inputText>
+                                            <p:inputText id="usuario" type="text" required="true" requiredMessage="Informe um usuário!" value="#{cadastroUsuarioMB.usuario}"></p:inputText>
                                             <label for="usuario">Usuário</label>
                                         </div>
 
                                         <div class="input-field col s6">
-                                            <p:inputText id="email" type="email" class="validate" value="#{cadastroUsuarioMB.email}" ></p:inputText>
+                                            <p:inputText id="email" type="email" required="true" requiredMessage="Informe seu e-mail!" value="#{cadastroUsuarioMB.email}" ></p:inputText>
                                             <label for="email">E-mail</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s6">
-                                            <p:inputText id="senha" type="password" class="validate" value="#{cadastroUsuarioMB.senha}"></p:inputText>
+                                            <p:inputText id="senha" type="password" required="true" requiredMessage="Informe uma senha!" value="#{cadastroUsuarioMB.senha}"></p:inputText>
                                             <label for="senha">Senha</label>
                                         </div>
 
                                         <div class="input-field col s6">
-                                            <p:inputText id="confirmarsenha" type="password" class="validate"></p:inputText>
+                                            <p:inputText id="confirmarsenha" type="password" required="true" requiredMessage="Confirme a senha!" value="#{cadastroUsuarioMB.confirmaSenha}"></p:inputText>
                                             <label for="senha">Confirmar Senha</label>
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <p:inputText id="cidade" type="text" class="validate" value="#{cadastroUsuarioMB.cidade}"></p:inputText>
-                                            <label for="cidade">Cidade</label>
-                                        </div>
-
-                                        <div class="input-field col s6">
-                                            <p:inputText id="estado" type="text" class="validate" value="#{cadastroUsuarioMB.estado}"></p:inputText>
-                                            <label for="estado">Estado</label>
-                                        </div>
-                                    </div>
-                                    <div align="right">
+                                    <h:form id="formmsg">
+                                        #{cadastroUsuarioMB.msgValidacao}
+                                    </h:form>
+                                    <div align="left">
                                         <p:commandButton update="msgGlobal" value="Cadastrar Usuário" action="#{cadastroUsuarioMB.criar()}" 
-                                                         class="btn waves-red waves-red black-text" />  
+                                                         class="btn waves-red waves-red white-text" />  
                                     </div>
-
                                 </div>
                             </div>
                         </div>
