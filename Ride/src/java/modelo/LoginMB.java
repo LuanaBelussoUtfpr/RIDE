@@ -9,10 +9,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpSession;
 import negocio.ILogin;
-import negocio.LoginBean;
 
 @ManagedBean
 @ViewScoped
