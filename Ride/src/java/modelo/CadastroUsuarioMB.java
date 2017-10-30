@@ -8,7 +8,6 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.swing.JOptionPane;
 import negocio.IUsuario;
 
 @ManagedBean
@@ -20,9 +19,8 @@ public class CadastroUsuarioMB {
     private String usuario;
     private String email;
     private String senha;
-    private String cidade;
-    private String estado;
-    private String pais="Brasil";
+    private String confirmaSenha;
+    private String msgValidacao="teste";
     
     @EJB
     private IUsuario cadastroUsuarioBean;
@@ -58,65 +56,58 @@ public class CadastroUsuarioMB {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
+    
     public String getEmail() {
         return email;
+    }
+
+    public String getConfirmaSenha() {
+        return confirmaSenha;
+    }
+
+    public void setConfirmaSenha(String confirmasenha) {
+        this.confirmaSenha = confirmasenha;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getMsgValidacao() {
+        return msgValidacao;
+    }
+
+    public void setMsgValidacao(String msgValidacao) {
+        this.msgValidacao = msgValidacao;
+    }
     
-    public boolean validarsenha(String senha, String confirmarsenha){
-        if(senha==confirmarsenha){
-            return true;
-        }else{
-            return false;
-        }
+    public boolean validarsenha(){
+        String password = this.getSenha();
+        String confirma = this.getConfirmaSenha();
+        
+        return password.equals(confirma);
     }
 
     public void criar() {
-        System.out.println(pais);
-        if (cadastroUsuarioBean.criar(this.getNome(), this.getSobrenome(), this.getUsuario(), this.getSenha(),
-                this.getEmail(), this.getCidade(), this.getEstado(), this.getPais())){
-            
-                try {
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-                } catch (IOException ex) {
-                    Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        
+        this.setMsgValidacao("validando");
+        
+        if(!validarsenha()){
+            this.setMsgValidacao("Senha e confirmação não conferem!");
         }else{
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Falha ao cadastrar usuário!",  "") );
-            
-        }
-           
-           
-           
-    }
-    
+            if (cadastroUsuarioBean.criar(this.getNome(), this.getSobrenome(), this.getUsuario(), this.getSenha(),
+                    this.getEmail())){
+
+                    try {
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+                    } catch (IOException ex) {
+                        Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+            }else{
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage("Falha ao cadastrar usuário!",  "") );
+
+            }
+        }      
+    } 
 }
