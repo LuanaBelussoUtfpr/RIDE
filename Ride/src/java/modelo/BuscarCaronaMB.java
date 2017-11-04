@@ -15,6 +15,7 @@ public class BuscarCaronaMB{
     private List<Carona> caronas;
     private Date dt;
     private String descricao;
+    private List<Carona> filteredCarona;
     
     @EJB
     private IBuscarCarona buscarCaronaBean;
@@ -23,8 +24,16 @@ public class BuscarCaronaMB{
         return buscarCaronaBean.consultar();
     }
     
+    public void setFilteredCarona(List<Carona> filteredCarona) {
+        this.filteredCarona = filteredCarona;
+    }
+
+    public List<Carona> getFilteredCarona() {
+        return filteredCarona;
+    }
+    
     public Date getDt() {
-        return dt;
+         return dt;
     }
 
     public void setDt(Date dt) {
