@@ -1,5 +1,6 @@
 
 package modelo;
+
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -15,7 +16,7 @@ public class CadastroCaronaMB {
     private String localOrigem;
     private String localDestino;
     private Long vagasDisponiveis;
-    private Long valorCarona;
+    private double valorCarona;
     private String dataCarona;
     private String horarioCarona;
     private String cidadeOrigem;
@@ -79,11 +80,11 @@ public class CadastroCaronaMB {
         this.vagasDisponiveis = vagasDisponiveis;
     }
 
-    public Long getValorCarona() {
+    public double getValorCarona() {
         return valorCarona;
     }
 
-    public void setValorCarona(Long valorCarona) {
+    public void setValorCarona(double valorCarona) {
         this.valorCarona = valorCarona;
     }
 
