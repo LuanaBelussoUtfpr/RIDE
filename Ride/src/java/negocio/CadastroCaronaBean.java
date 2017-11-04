@@ -2,6 +2,8 @@
 package negocio;
 
 import entidade.Carona;
+import java.sql.Time;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,7 +15,7 @@ public class CadastroCaronaBean implements ICarona{
 
     @Override
     public boolean criar(String descricao, String localOrigem, String localDestino, 
-            Long vagasDisponiveis, Long valorCarona,String dataCarona, String horarioCarona, 
+            Long vagasDisponiveis, double valorCarona, String dataCarona, String horarioCarona, 
             String cidadeOrigem, String estadoOrigem, String paisOrigem,
             String cidadeDestino, String estadoDestino, String paisDestino) {
         
