@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:decorate template="menubuscarcarona.xhtml"></ui:decorate>
 
     <h:head>
@@ -20,52 +21,59 @@
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
+        
         <h:form class="col s12">
-            <div class="row">
-                <div class="container">  
-                    <div class="center_align">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="input-field col s6">
-                                        <h6>Data:</h6>
-                                        <p:inputText id="data" type="date" class="validate" value="#{buscarCaronaMB.dt}"></p:inputText>
-                                    </div>
-                                    <div align="right">
-                                        <p:commandButton ajax="false" value="Buscar Carona" class="btn waves-red waves-red black-text" />  
-                                    </div>  
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <p:panel header="Caronas">
-                <p:dataTable var="carona" value="#{buscarCaronaMB.consultar()}">
-                    <p:column headerText="Descrição">
+                <p:dataTable var="carona" value="#{buscarCaronaMB.consultar()}" widgetVar="caronaTable" 
+                             emptyMessage="Nenhum registro encontrado." 
+                             filteredValue="#{buscarCaronaMB.filteredCarona}">
+ 
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Pesquisar por:   " />
+                            <p:inputText id="globalFilter" onkeyup="PF('caronaTable').filter()" style="width:150px" placeholder="Digite o que procura"/>
+                        </p:outputPanel>
+                    </f:facet>
+                    
+                    <p:column headerText="Descrição" filterBy="#{carona.descricao}" filterMatchMode="contains">
                         <h:outputText value="#{carona.descricao}"/>
                     </p:column>  
-                    <p:column headerText="Data">
-                        <h:outputText value="#{carona.dataCarona}"/>
+                    
+                    <p:column headerText="Data" filterBy="#{carona.dataCarona}" filterMatchMode="contains">
+                        
+                        <h:outputText value="#{carona.dataCarona}">
+                        </h:outputText>
+                        
                     </p:column>
-                    <p:column headerText="Local Origem">
-                        <h:outputText value="#{carona.localOrigem}"/>
-                    </p:column>
-                    <p:column headerText="Local Destino">
-                        <h:outputText value="#{carona.localDestino}"/>
-                    </p:column>
-                    <p:column headerText="Vagas Disponíveis">
+                    
+                    <p:column headerText="Horário" filterBy="#{carona.horarioCarona}" filterMatchMode="contains">
+                        <h:outputText value="#{carona.horarioCarona}"/>
+                    </p:column> 
+                    <p:column headerText="Vagas" filterBy="#{carona.vagasDisponiveis}" filterMatchMode="contains">
                         <h:outputText value="#{carona.vagasDisponiveis}"/>
                     </p:column>
-                    <p:column headerText="Valor Carona">
+                    <p:column headerText="Valor" filterBy="#{carona.valorCarona}" filterMatchMode="contains">
                         <h:outputText value="#{carona.valorCarona}"/>
                     </p:column>
-                    <p:column headerText="Cidade">
+                    
+                    <p:column headerText="Saída" filterBy="#{carona.localOrigem}" filterMatchMode="contains">
+                        <h:outputText value="#{carona.localOrigem}"/>
+                    </p:column>
+                    <p:column headerText="Cidade" filterBy="#{carona.cidadeOrigem}" filterMatchMode="contains">
                         <h:outputText value="#{carona.cidadeOrigem}"/>
                     </p:column>
-                    <p:column headerText="Estado">
+                    <p:column headerText="Estado" filterBy="#{carona.estadoOrigem}"  filterMatchMode="contains">
                         <h:outputText value="#{carona.estadoOrigem}"/>
+                    </p:column>
+                    
+                     <p:column headerText="Chegada" filterBy="#{carona.localDestino}" filterMatchMode="contains">
+                        <h:outputText value="#{carona.localDestino}"/>
+                    </p:column>
+                    <p:column headerText="Cidade" filterBy="#{carona.cidadeDestino}" filterMatchMode="contains">
+                        <h:outputText value="#{carona.cidadeDestino}"/>
+                    </p:column>
+                    <p:column headerText="Estado" filterBy="#{carona.estadoDestino}"  filterMatchMode="contains">
+                        <h:outputText value="#{carona.estadoDestino}"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>
