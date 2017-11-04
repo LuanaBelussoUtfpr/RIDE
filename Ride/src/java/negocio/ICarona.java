@@ -1,7 +1,5 @@
 package negocio;
 
-import java.sql.Time;
-import java.util.Date;
 import javax.ejb.Local;
 
 @Local
