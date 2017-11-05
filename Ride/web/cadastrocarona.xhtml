@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
       <ui:decorate template="menucadastrocarona.xhtml"></ui:decorate>
       
     <h:head>
@@ -100,6 +101,20 @@
                                                 <p:inputText value="#{cadastroCaronaMB.estadoDestino}" id="estadoDestino" />
                                                 <p:inputText value="#{cadastroCaronaMB.paisDestino}" id="paisDestino" />
                                             </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <p>Telefone para Contato:</p>
+                                            <p:inputText id="telefone" required="true" requiredMessage="Informe telefone para contato!" value="#{cadastroCaronaMB.telefone}"/>
+                                        </div>
+
+                                        <div class="input-field col s6">
+                                            <p>E-mail para Contato:</p>
+                                            <p:inputText id="email" type="email" required="true" requiredMessage="Informe o e-mail para contato!" value="#{cadastroCaronaMB.email}"></p:inputText>
+ 
                                         </div>
                                     </div>
                                     
