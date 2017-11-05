@@ -18,16 +18,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     </h:head>
     <h:body>
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
         
-        <h:form class="col s12">
-            <p:panel header="Caronas">
-                <p:dataTable var="carona" value="#{buscarCaronaMB.consultar()}" widgetVar="caronaTable" 
-                             emptyMessage="Nenhum registro encontrado." 
-                             filteredValue="#{buscarCaronaMB.filteredCarona}">
- 
+        <h:form>
+                <p:dataTable var="carona" value="#{buscarCaronaMB.consultar()}" widgetVar="caronaTable"
+                            id="car"
+                            sortMode="multiple"
+                            rows="10" paginator="true"
+                            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                            rowsPerPageTemplate="5,10,15"
+                            selectionMode="single" selection="#{buscarCaronaMB.selectedCar}" 
+                            rowKey="#{carona.descricao}"
+                            emptyMessage="Nenhum registro encontrado." 
+                            filteredValue="#{buscarCaronaMB.filteredCarona}">
+                        
+                    
                     <f:facet name="header">
                         <p:outputPanel>
                             <h:outputText value="Pesquisar por:   " />
@@ -35,48 +39,70 @@
                         </p:outputPanel>
                     </f:facet>
                     
-                    <p:column headerText="Descrição" filterBy="#{carona.descricao}" filterMatchMode="contains">
+                    <p:column headerText="Descrição" sortBy="#{carona.descricao}" filterBy="#{carona.descricao}" filterMatchMode="contains">
                         <h:outputText value="#{carona.descricao}"/>
                     </p:column>  
                     
-                    <p:column headerText="Data" filterBy="#{carona.dataCarona}" filterMatchMode="contains">
+                    <p:column headerText="Data" sortBy="#{carona.dataCarona}" filterBy="#{carona.dataCarona}" filterMatchMode="contains">
                         
                         <h:outputText value="#{carona.dataCarona}">
                         </h:outputText>
                         
                     </p:column>
                     
-                    <p:column headerText="Horário" filterBy="#{carona.horarioCarona}" filterMatchMode="contains">
+                    <p:column headerText="Horário" sortBy="#{carona.horarioCarona}" filterBy="#{carona.horarioCarona}" filterMatchMode="contains">
                         <h:outputText value="#{carona.horarioCarona}"/>
                     </p:column> 
-                    <p:column headerText="Vagas" filterBy="#{carona.vagasDisponiveis}" filterMatchMode="contains">
+                    <p:column headerText="Vagas" sortBy="#{carona.vagasDisponiveis}" filterBy="#{carona.vagasDisponiveis}" filterMatchMode="contains">
                         <h:outputText value="#{carona.vagasDisponiveis}"/>
                     </p:column>
-                    <p:column headerText="Valor" filterBy="#{carona.valorCarona}" filterMatchMode="contains">
+                    <p:column headerText="Valor" sortBy="#{carona.valorCarona}" filterBy="#{carona.valorCarona}" filterMatchMode="contains">
                         <h:outputText value="#{carona.valorCarona}"/>
                     </p:column>
                     
-                    <p:column headerText="Saída" filterBy="#{carona.localOrigem}" filterMatchMode="contains">
+                    <p:column headerText="Saída" sortBy="#{carona.localOrigem}" filterBy="#{carona.localOrigem}" filterMatchMode="contains">
                         <h:outputText value="#{carona.localOrigem}"/>
                     </p:column>
-                    <p:column headerText="Cidade" filterBy="#{carona.cidadeOrigem}" filterMatchMode="contains">
+                    <p:column headerText="Cidade" sortBy="#{carona.cidadeOrigem}" filterBy="#{carona.cidadeOrigem}" filterMatchMode="contains">
                         <h:outputText value="#{carona.cidadeOrigem}"/>
                     </p:column>
-                    <p:column headerText="Estado" filterBy="#{carona.estadoOrigem}"  filterMatchMode="contains">
+                    <p:column headerText="Estado" sortBy="#{carona.estadoOrigem}" filterBy="#{carona.estadoOrigem}"  filterMatchMode="contains">
                         <h:outputText value="#{carona.estadoOrigem}"/>
                     </p:column>
                     
-                     <p:column headerText="Chegada" filterBy="#{carona.localDestino}" filterMatchMode="contains">
+                     <p:column headerText="Chegada" sortBy="#{carona.localDestino}"  filterBy="#{carona.localDestino}" filterMatchMode="contains">
                         <h:outputText value="#{carona.localDestino}"/>
                     </p:column>
-                    <p:column headerText="Cidade" filterBy="#{carona.cidadeDestino}" filterMatchMode="contains">
+                    <p:column headerText="Cidade" sortBy="#{carona.cidadeDestino}"  filterBy="#{carona.cidadeDestino}" filterMatchMode="contains">
                         <h:outputText value="#{carona.cidadeDestino}"/>
                     </p:column>
-                    <p:column headerText="Estado" filterBy="#{carona.estadoDestino}"  filterMatchMode="contains">
+                    <p:column headerText="Estado" sortBy="#{carona.estadoDestino}"  filterBy="#{carona.estadoDestino}"  filterMatchMode="contains">
                         <h:outputText value="#{carona.estadoDestino}"/>
                     </p:column>
                 </p:dataTable>
-            </p:panel>
+            
+            <p:contextMenu for="car">
+                <p:menuitem value="Contato" update="carDetail" icon="ui-icon-phone" oncomplete="PF('carDialog').show()"/>        
+            </p:contextMenu>
+
+            <p:dialog header="Contato" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="carDetail" style="text-align:center;">
+                    
+                        <h:outputText value="Telefone:" />
+                        <p></p>
+                        <p></p>
+                        <h:outputText value="#{buscarCaronaMB.selectedCar.telefone}" />
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <h:outputText value="E-mail:" />
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <h:outputText value="#{buscarCaronaMB.selectedCar.email}" />
+                        <p></p>
+                </p:outputPanel>
+            </p:dialog>
         </h:form>
     </h:body>
 </html>
