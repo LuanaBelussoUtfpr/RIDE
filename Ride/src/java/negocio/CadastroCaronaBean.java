@@ -2,8 +2,6 @@
 package negocio;
 
 import entidade.Carona;
-import java.sql.Time;
-import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,7 +15,7 @@ public class CadastroCaronaBean implements ICarona{
     public boolean criar(String descricao, String localOrigem, String localDestino, 
             Long vagasDisponiveis, double valorCarona, String dataCarona, String horarioCarona, 
             String cidadeOrigem, String estadoOrigem, String paisOrigem,
-            String cidadeDestino, String estadoDestino, String paisDestino) {
+            String cidadeDestino, String estadoDestino, String paisDestino, String telefone, String email) {
         
         Carona c = new Carona();
         
@@ -34,6 +32,8 @@ public class CadastroCaronaBean implements ICarona{
         c.setCidadeDestino(cidadeDestino);
         c.setEstadoDestino(estadoDestino);
         c.setPaisDestino(paisDestino);
+        c.setTelefone(telefone);
+        c.setEmail(email);
         
         try {
             em.persist(c);
