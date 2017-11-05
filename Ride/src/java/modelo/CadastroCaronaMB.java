@@ -27,7 +27,8 @@ public class CadastroCaronaMB {
     private String paisDestino;
     private String enderecoOrigem;
     private String enderecoDestino;
-   
+    private String telefone;
+    private String email;
    
     @EJB
     private ICarona CadastroCaronaBean;
@@ -152,6 +153,21 @@ public class CadastroCaronaMB {
         this.paisDestino = paisDestino;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
    
     public void criar(){
         FacesContext context = FacesContext.getCurrentInstance();
@@ -159,12 +175,32 @@ public class CadastroCaronaMB {
         if (CadastroCaronaBean.criar(this.getDescricao(),this.getLocalOrigem(),this.getLocalDestino(),
                 this.getVagasDisponiveis(),this.getValorCarona(),this.getDataCarona(),this.getHorarioCarona(),
                 this.getCidadeOrigem(),this.getEstadoOrigem(), this.getPaisOrigem(),
-                this.getCidadeDestino(), this.getEstadoDestino(), this.getPaisDestino())){
+                this.getCidadeDestino(), this.getEstadoDestino(), this.getPaisDestino(),
+                this.getTelefone(), this.getEmail())){
             
                context.addMessage(null, new FacesMessage("Carona registrada com sucesso!", ""));
-               
+               limpar();               
         }else{
             context.addMessage(null, new FacesMessage("Falha ao registrar carona!", ""));
         }   
+    }
+    
+    public void limpar(){
+        this.setDescricao(null);
+        this.setLocalOrigem(null);
+        this.setLocalDestino(null);
+        this.setVagasDisponiveis(null);
+        this.setValorCarona(0);
+        this.setDataCarona(null);
+        this.setHorarioCarona(null);
+        this.setCidadeOrigem(null);
+        this.setEstadoOrigem(null);
+        this.setPaisOrigem(null);
+        this.setCidadeDestino(null); 
+        this.setEstadoDestino(null);
+        this.setPaisDestino(null);
+        this.setTelefone(null); 
+        this.setEmail(null);
+                
     }
 }
