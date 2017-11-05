@@ -1,16 +1,11 @@
 package entidade;
 
 import java.io.Serializable;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
 
 @Entity
 public class Carona implements Serializable {
@@ -29,6 +24,8 @@ public class Carona implements Serializable {
     private String cidadeDestino;
     private String estadoDestino;
     private String paisDestino;
+    private String telefone;
+    private String email;
 
     public Carona() {
         super();
@@ -41,6 +38,23 @@ public class Carona implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
 
     public String getDescricao() {
         return descricao;
@@ -171,3 +185,4 @@ public class Carona implements Serializable {
         return true;
     }   
 }
+
