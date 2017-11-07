@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -17,7 +18,6 @@ public class LoginMB {
     
     private String usuario;
     private String senha;
-    private String msgLogin="";
     
     @EJB
     private ILogin loginBean;
@@ -37,18 +37,8 @@ public class LoginMB {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    public String getMsgLogin() {
-        return msgLogin;
-    }
-
-    public void setMsgLogin(String msgLogin) {
-        this.msgLogin = msgLogin;
-    }
         
-    public void login(){
-        this.setMsgLogin("Validando login");
-        
+    public void login(){        
         List<Usuario> lista;     
         lista = loginBean.consultar(this.getUsuario(), this.getSenha());
                       
@@ -64,10 +54,8 @@ public class LoginMB {
                 Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
-            this.setMsgLogin("Usuário e Senha Inválidos!");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Usuário e Senha Inválidos!",  "") );
         }
-    }
-    
-
-    
+    }   
 }
