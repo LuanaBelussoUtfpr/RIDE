@@ -5,12 +5,9 @@ import entidade.Carona;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import negocio.IBuscarCarona;
-import org.primefaces.event.SelectEvent;
 
 @ManagedBean
 @ViewScoped
@@ -27,7 +24,6 @@ public class BuscarCaronaMB{
     public List<Carona> consultar(){
         return buscarCaronaBean.consultar();
     }
-    
     
     public void setFilteredCarona(List<Carona> filteredCarona) {
         this.filteredCarona = filteredCarona;
@@ -60,5 +56,5 @@ public class BuscarCaronaMB{
     public void setSelectedCar(Carona selectedCar) {
         this.selectedCar = selectedCar;
     }
-    
+
 }
