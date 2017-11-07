@@ -19,23 +19,23 @@
     <h:body>
         <h:form>
             <div class="row">
+                <p:growl id="msgGlobal"/>
                 <div class="container">
                     <div class="center_align">
                         <div class="card">
                             <div class="center">
-                                <img class="responsive-img" style="max-width: 64px" src="img/login2.png"></img>
+                                <img class="responsive-img" style="max-width: 250px" src="img/new_user.PNG"></img>
                             </div>
                             <div class="left-align">
                                 <h:form id="login">
                                     <form action="index.xhtml" method="post">
-                                        <p:inputText  placeholder="Usuário" id="usuario" type="text" required="true" class="validate" value="#{loginMB.usuario}"/>
-                                        <p:inputText  placeholder="Senha" id="senha" type="password" required="true" class="validate" value="#{loginMB.senha}"/>
-                                        #{loginMB.msgLogin}
+                                        <p:inputText  placeholder="Usuário" id="usuario" type="text" required="true" requiredMessage="Informe seu usuário!" class="validate" value="#{loginMB.usuario}"/>
+                                        <p:inputText  placeholder="Senha" id="senha" type="password" required="true" requiredMessage="Informe sua senha!" class="validate" value="#{loginMB.senha}"/>
                                     </form>
                                 </h:form>
                             </div>
                             <div class="row center">
-                                <p:commandButton ajax ="false" type="submit" value="Login" actionListener="#{loginMB.login()}" 
+                                <p:commandButton update="msgGlobal" ajax ="false" type="submit" value="Login" actionListener="#{loginMB.login()}" 
                                                  class="btn waves-red waves-red white-text" /> 
 
                             </div>
