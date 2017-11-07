@@ -20,6 +20,7 @@
     <h:body>
         
         <h:form>
+            <br></br><br></br>
                 <p:dataTable var="carona" value="#{buscarCaronaMB.consultar()}" widgetVar="caronaTable"
                             id="car"
                             sortMode="multiple"
@@ -31,7 +32,6 @@
                             emptyMessage="Nenhum registro encontrado." 
                             filteredValue="#{buscarCaronaMB.filteredCarona}">
                         
-                    
                     <f:facet name="header">
                         <p:outputPanel>
                             <h:outputText value="Pesquisar por:   " />
