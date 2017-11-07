@@ -20,7 +20,6 @@ public class CadastroUsuarioMB {
     private String email;
     private String senha;
     private String confirmaSenha;
-    private String msgValidacao="teste";
     
     @EJB
     private IUsuario cadastroUsuarioBean;
@@ -72,14 +71,6 @@ public class CadastroUsuarioMB {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getMsgValidacao() {
-        return msgValidacao;
-    }
-
-    public void setMsgValidacao(String msgValidacao) {
-        this.msgValidacao = msgValidacao;
-    }
     
     public boolean validarsenha(){
         String password = this.getSenha();
@@ -87,26 +78,33 @@ public class CadastroUsuarioMB {
         
         return password.equals(confirma);
     }
+    
+    public boolean caracterSenha(){
+        String password = this.getSenha();
+        
+        return password.length() >= 6;
+    }
+    
 
     public void criar() {
-        
-        this.setMsgValidacao("validando");
-        
+        FacesContext context = FacesContext.getCurrentInstance();
+       
         if(!validarsenha()){
-            this.setMsgValidacao("Senha e confirmação não conferem!");
+            context.addMessage(null, new FacesMessage("Senha e confirmação não conferem!",  "") );
+        }else if(!caracterSenha()){
+            context.addMessage(null, new FacesMessage("A senha deve conter no mínimo 6 caracteres!",  "") );
         }else{
+             
             if (cadastroUsuarioBean.criar(this.getNome(), this.getSobrenome(), this.getUsuario(), this.getSenha(),
                     this.getEmail())){
 
                     try {
-                        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
                     } catch (IOException ex) {
                         Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, ex);
                     }
             }else{
-                FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, new FacesMessage("Falha ao cadastrar usuário!",  "") );
-
             }
         }      
     } 
