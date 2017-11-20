@@ -82,23 +82,21 @@
                 </p:dataTable>
             
             <p:contextMenu for="car">
-                <p:menuitem value="Contato" update="carDetail" icon="ui-icon-phone" oncomplete="PF('carDialog').show()"/>        
+                <p:menuitem value="Contato" update="carDetail" icon="ui-icon-document" oncomplete="PF('carDialog').show()"/>        
             </p:contextMenu>
 
-            <p:dialog header="Contato" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:dialog header="Contato" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="600">
                 <p:outputPanel id="carDetail" style="text-align:center;">
-                    
-                        <h:outputText value="Telefone:" />
+                        <img class="responsive-img" style="max-width: 200px" src="img/icone-contato.png"></img>
                         <p></p>
-                        <p></p>
+                        <p></p>                    
+                        <h:outputText value="Telefone:      " />
                         <h:outputText value="#{buscarCaronaMB.selectedCar.telefone}" />
+                        
                         <p></p>
                         <p></p>
                         <p></p>
-                        <h:outputText value="E-mail:" />
-                        <p></p>
-                        <p></p>
-                        <p></p>
+                        <h:outputText value="E-mail:        " />
                         <h:outputText value="#{buscarCaronaMB.selectedCar.email}" />
                         <p></p>
                 </p:outputPanel>
